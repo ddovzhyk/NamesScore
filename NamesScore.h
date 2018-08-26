@@ -4,7 +4,7 @@
 class NamesScore
 {
 public:
-    NamesScore() = default;
+    NamesScore();
     NamesScore(const NamesScore &) = default;
     NamesScore& operator=(const NamesScore &) = default;
 
@@ -13,10 +13,10 @@ public:
     unsigned int calculateTotalScore();
 
 private:
-    unsigned int calculateNameSum(const std::string &name);
+    unsigned int calculateNameSum(const unsigned int &position, const std::string &name);
 
 private:
     unsigned int m_score;
-    std::multiset<std::string> names;
+    std::multiset<std::string> m_names;
 
 };
