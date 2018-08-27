@@ -1,7 +1,12 @@
 *.o
 CMakeFiles/
+src/CMakeFiles/
+test/CMakeFiles/
+Testing/Temporary
 CMakeLists.txt.user
 Makefile
 cmake_install.cmake
 CMakeCache.txt
 nameScore
+CTestTestfile.cmake
+

@@ -7,12 +7,14 @@ public:
     NamesScore();
     NamesScore(const NamesScore &) = default;
     NamesScore& operator=(const NamesScore &) = default;
+    ~NamesScore() = default;
 
 public:
-    unsigned int calculateTotalScore(const std::string &fullPath);
+    void clearData();
+    bool readFile(const std::string &fullPath);
+    unsigned int calculateTotalScore();
 
 private:
-    void readFile(const std::string &fullPath);
     unsigned int calculateNameSum(const unsigned int &position, const std::string &name);
 
 private:

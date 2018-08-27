@@ -7,7 +7,15 @@ NamesScore::NamesScore() :
 {
 }
 
-void NamesScore::readFile(const std::string &fullPath)
+void NamesScore::clearData()
+{
+    m_score = 0;
+    if (m_names.size() != 0) {
+        m_names.clear();
+    }
+}
+
+bool NamesScore::readFile(const std::string &fullPath)
 {
     std::ifstream inputFile(fullPath);
     std::string tempName;
@@ -15,20 +23,21 @@ void NamesScore::readFile(const std::string &fullPath)
     if (!inputFile.is_open())
     {
         std::cerr << "ERROR: Cannot open file!" << std::endl;
-        std::exit(-1);
+        return false;
     }
 
     while(std::getline(inputFile, tempName))
     {
         m_names.insert(std::move(tempName));
     }
+
+    return true;
 }
 
-unsigned int NamesScore::calculateTotalScore(const std::string &fullPath)
+unsigned int NamesScore::calculateTotalScore()
 {
     unsigned int pos = 1;
 
-    readFile(fullPath);
     for(auto it = m_names.begin(); it != m_names.end(); ++it, ++pos)
     {
         m_score += calculateNameSum(pos, *it);
