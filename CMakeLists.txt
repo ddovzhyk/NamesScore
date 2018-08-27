@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
-
 set (CMAKE_CXX_STANDARD 11)
+project(namesScore)
+add_subdirectory(src)
 
-project(nameScore)
-file(GLOB SOURCES main.cpp NamesScore.h NamesScore.cpp)
-add_executable(${PROJECT_NAME} ${SOURCES})
-include_directories("${PROJECT_BINARY_DIR}")
+enable_testing()
+add_subdirectory(test)
