@@ -11,7 +11,7 @@ public:
 
 public:
     void clearData();
-    bool readFile(const std::string &fullPath);
+    bool readFile(const std::string &path);
     unsigned int calculateTotalScore();
 
 private:

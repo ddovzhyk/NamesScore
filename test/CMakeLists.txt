@@ -1,14 +1,13 @@
-cmake_minimum_required(VERSION 3.0)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-set(BOOST_INCLUDE_DIRS $boost_installation_prefix/include)
+add_executable(unit_tests tests.cpp)
 
-add_executable(Test test.cpp)
-target_include_directories(Test PRIVATE ${BOOST_INCLUDE_DIRS}
-                             ${PROJECT_SOURCE_DIR}/src
-                           )
-target_link_libraries(Test ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+target_link_libraries(unit_tests NamesScoreLib
+                                 ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+                     )
 
+target_compile_definitions(unit_tests PRIVATE BOOST_TEST_DYN_LINK)
 
-add_test(NAME test1 COMMAND Test)
+add_test(NAME test_all COMMAND unit_tests)

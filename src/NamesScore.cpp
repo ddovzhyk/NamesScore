@@ -15,9 +15,9 @@ void NamesScore::clearData()
     }
 }
 
-bool NamesScore::readFile(const std::string &fullPath)
+bool NamesScore::readFile(const std::string &path)
 {
-    std::ifstream inputFile(fullPath);
+    std::ifstream inputFile(path);
     std::string tempName;
 
     if (!inputFile.is_open())
